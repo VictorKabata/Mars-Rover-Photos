@@ -9,5 +9,7 @@ java {
 }
 
 dependencies{
+    api(libs.kotlinX.coroutines)
+    api(libs.koin.core)
 
 }

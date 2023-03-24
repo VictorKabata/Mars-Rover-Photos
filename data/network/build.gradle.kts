@@ -1,6 +1,6 @@
 plugins {
-    id ("com.android.library")
-    id ("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -12,7 +12,6 @@ android {
         targetSdk = 33
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        // consumerProguardFiles = "consumer-rules.pro"
     }
 
     buildTypes {
@@ -36,7 +35,12 @@ android {
 }
 
 dependencies {
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.cio)
+    implementation(libs.ktor.contentNegotiation)
+    implementation(libs.ktor.json)
+    implementation(libs.ktor.logging)
 
-    // implementation("androidx.core:core-ktx:1.7.0")
+    implementation(libs.kotlinX.serializationJson)
 
 }
