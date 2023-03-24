@@ -1,12 +1,13 @@
 package com.vickbt.marsrover.ui.screens.home
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -21,16 +22,19 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
 
     if (homeUiState.isLoading) {
         CircularProgressIndicator()
+    } else if (!homeUiState.error.isNullOrEmpty()) {
+        Text(text = "Error: ${homeUiState.error}")
     } else {
         LazyVerticalGrid(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
             columns = GridCells.Fixed(2),
-            verticalArrangement = Arrangement.spacedBy(4.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             homeUiState.data?.let {
                 items(items = it) { photo ->
                     PhotoCard(
-                        modifier = Modifier.height(200.dp),
+                        modifier = Modifier.height(250.dp),
                         photo = photo,
                         onClickPhoto = {})
                 }
