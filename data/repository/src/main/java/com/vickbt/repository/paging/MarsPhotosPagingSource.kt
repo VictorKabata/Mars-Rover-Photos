@@ -13,11 +13,10 @@ class MarsPhotosPagingSource constructor(private val apiService: ApiService) :
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
         val page = params.key ?: 1
-        val pageSize = params.loadSize
-
-        val result = apiService.fetchMarsPhotos(page = page)
 
         return try {
+            val result = apiService.fetchMarsPhotos(page = page)
+
             LoadResult.Page(
                 data = result.map { it.toDomain() },
                 nextKey = if (result.isEmpty()) null else page.plus(1),
