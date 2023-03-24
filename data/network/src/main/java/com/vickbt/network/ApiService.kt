@@ -1,17 +1,20 @@
 package com.vickbt.network
 
+import com.vickbt.network.models.MarsPhotosDto
+import com.vickbt.network.models.PhotoDto
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 
 class ApiService constructor(private val httpClient: HttpClient) {
 
-    suspend fun fetchMarsPhotos(page: Int = 1, sol: Int = 1000) {
-        httpClient.get(urlString = "mars-photos/api/v1/rovers/curiosity/photos") {
+    suspend fun fetchMarsPhotos(page: Int = 1, sol: Int = 1000): List<PhotoDto> {
+        return httpClient.get(urlString = "mars-photos/api/v1/rovers/curiosity/photos") {
             parameter("page", page)
             parameter("sol", sol)
             parameter("api_key", "DEMO_KEY") //ToDo: Change based on build variant
-        }
+        }.body<MarsPhotosDto>().photosDto
     }
 
 }

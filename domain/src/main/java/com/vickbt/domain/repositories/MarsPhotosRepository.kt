@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface MarsPhotosRepository {
 
-    suspend fun fetchMarsPhotos(page: Int = 1, roverName: String? = null): Flow<List<Photo>?>
+    suspend fun fetchMarsPhotos(page: Int = 1): Flow<List<Photo>?>
 
 }

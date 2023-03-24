@@ -55,6 +55,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":data:repository"))
+
     implementation(libs.androidx.core)
     implementation(libs.lifecycle.runtime)
     implementation(libs.compose.activity)
