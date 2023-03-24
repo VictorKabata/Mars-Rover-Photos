@@ -36,6 +36,7 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
         topBar = {
             HomeTopAppBar(
                 onFilterClicked = {
+                    viewModel.filterRover(roverName = it)
                     Toast.makeText(context, "Clicked: $it", Toast.LENGTH_LONG).show()
                 }
             )

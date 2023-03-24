@@ -7,7 +7,10 @@ import com.vickbt.network.ApiService
 import com.vickbt.repository.mappers.toDomain
 import java.io.IOException
 
-class MarsPhotosPagingSource constructor(private val apiService: ApiService) :
+class MarsPhotosPagingSource constructor(
+    private val apiService: ApiService,
+    private val roverName: String
+) :
     PagingSource<Int, Photo>() {
 
 
@@ -15,7 +18,7 @@ class MarsPhotosPagingSource constructor(private val apiService: ApiService) :
         val page = params.key ?: 1
 
         return try {
-            val result = apiService.fetchMarsPhotos(page = page)
+            val result = apiService.fetchMarsPhotos(page = page, roverName = roverName)
 
             LoadResult.Page(
                 data = result.map { it.toDomain() },

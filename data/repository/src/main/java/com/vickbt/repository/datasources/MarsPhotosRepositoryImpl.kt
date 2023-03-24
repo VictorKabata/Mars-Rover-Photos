@@ -12,13 +12,18 @@ import kotlinx.coroutines.flow.Flow
 class MarsPhotosRepositoryImpl constructor(private val apiService: ApiService) :
     MarsPhotosRepository {
 
-    override suspend fun fetchMarsPhotos(page: Int): Flow<PagingData<Photo>> {
+    override suspend fun fetchMarsPhotos(page: Int, roverName: String): Flow<PagingData<Photo>> {
 
         val pagingConfig = PagingConfig(pageSize = 15, enablePlaceholders = false)
 
         return Pager(
             config = pagingConfig,
-            pagingSourceFactory = { MarsPhotosPagingSource(apiService = apiService) }
+            pagingSourceFactory = {
+                MarsPhotosPagingSource(
+                    apiService = apiService,
+                    roverName = roverName
+                )
+            }
         ).flow
     }
 
