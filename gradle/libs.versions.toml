@@ -48,9 +48,6 @@ ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = 
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
-paging-kotlin={module="io.github.kuuuurt:multiplatform-paging", version.ref="pagingKotlin"}
-paging-common={module="androidx.paging:paging-common", version.ref="paging"}
-
 
 #Android Dependencies
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "kotlin" }
@@ -74,5 +71,6 @@ espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref =
 compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+paging-common={module="androidx.paging:paging-common", version.ref="paging"}
 googleTruth = { module = "com.google.truth:truth", version.ref = "truth" }
 ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }

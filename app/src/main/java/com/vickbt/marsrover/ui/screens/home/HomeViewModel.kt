@@ -21,9 +21,9 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
     }
 
     private fun fetchMarsPhotos() = viewModelScope.launch {
-        marsPhotosRepository.fetchMarsPhotos().cachedIn(viewModelScope).collect { pagedPhotos ->
-            _homeUiState.update { it.copy(data = pagedPhotos, isLoading = false) }
-        }
+        val response = marsPhotosRepository.fetchMarsPhotos().cachedIn(viewModelScope)
+        _homeUiState.update { it.copy(data = response, isLoading = false) }
+
     }
 
 }

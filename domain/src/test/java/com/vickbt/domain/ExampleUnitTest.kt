@@ -1,4 +1,4 @@
-package com.vickbt.cache
+package com.vickbt.domain
 
 import org.junit.Test
 

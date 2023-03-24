@@ -20,8 +20,8 @@ class MarsPhotosPagingSource constructor(private val apiService: ApiService) :
         return try {
             LoadResult.Page(
                 data = result.map { it.toDomain() },
-                nextKey = if (result.isEmpty()) null else (pageSize / 25),
-                prevKey = if (page == 1) null else page - 1
+                nextKey = if (result.isEmpty()) null else page.plus(1),
+                prevKey = if (page == 1) null else page.minus(1)
             )
         } catch (e: IOException) {
             LoadResult.Error(e)

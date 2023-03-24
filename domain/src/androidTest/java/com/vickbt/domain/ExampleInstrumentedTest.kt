@@ -1,4 +1,4 @@
-package com.vickbt.cache
+package com.vickbt.domain
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.vickbt.cache.test", appContext.packageName)
+        assertEquals("com.vickbt.core.test", appContext.packageName)
     }
 }

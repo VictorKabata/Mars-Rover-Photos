@@ -1,6 +1,6 @@
 package com.vickbt.domain.repositories
 
-import com.kuuurt.paging.multiplatform.PagingData
+import androidx.paging.PagingData
 import com.vickbt.domain.models.Photo
 import kotlinx.coroutines.flow.Flow
 

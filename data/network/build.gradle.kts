@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace="com.vickbt.network"
+    namespace = "com.vickbt.network"
     compileSdk = 33
 
     defaultConfig {
@@ -26,8 +26,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility=JavaVersion.VERSION_1_8
-        targetCompatibility=JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
