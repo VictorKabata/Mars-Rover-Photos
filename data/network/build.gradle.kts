@@ -35,6 +35,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+
     implementation(libs.ktor.core)
     implementation(libs.ktor.cio)
     implementation(libs.ktor.contentNegotiation)
