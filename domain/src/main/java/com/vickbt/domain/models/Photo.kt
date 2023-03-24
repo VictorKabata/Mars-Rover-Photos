@@ -1,6 +1,6 @@
 package com.vickbt.domain.models
 
-
+/**Mars photo properties*/
 data class Photo(
     val camera: Camera? = null,
     val earthDate: String? = null,

@@ -1,6 +1,6 @@
 package com.vickbt.domain.models
 
-
+/**Mars Rover properties*/
 data class Rover(
     val id: Int? = null,
     val landingDate: String? = null,
