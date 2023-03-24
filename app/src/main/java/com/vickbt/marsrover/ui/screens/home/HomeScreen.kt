@@ -1,6 +1,7 @@
 package com.vickbt.marsrover.ui.screens.home
 
 import android.util.Log
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -10,16 +11,19 @@ import org.koin.androidx.compose.getViewModel
 fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
 
     val homeUiState = viewModel.homeUiState.collectAsState().value
-    val error = viewModel.error.collectAsState().value
 
     Log.e("VicKbt", "HomeUiState: $homeUiState")
 
-    homeUiState.data?.let {
-        Text(text = "$it")
-    }
+    if (homeUiState.isLoading) {
+        CircularProgressIndicator()
+    } else {
+        homeUiState.data?.let {
+            Text(text = "Mars Photos:\n$it")
+        }
 
-    error?.let {
-        Text(text = "Error: $it")
+        homeUiState.error?.let {
+            Text(text = "Error:\n$it")
+        }
     }
 
 
