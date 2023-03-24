@@ -1,0 +1,13 @@
+[versions]
+kotlin = "1.8.0"
+androidGradle = "7.4.2"
+
+compose = "1.2.0"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradle" }
+android-library = { id = "com.android.library", version.ref = "androidGradle" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-JVM = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+[libraries]
