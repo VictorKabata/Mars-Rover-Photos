@@ -2,7 +2,6 @@
 
 package com.vickbt.marsrover.ui.components
 
-import androidx.appcompat.widget.TooltipCompat
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -35,12 +34,22 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
         shape = RoundedCornerShape(4.dp),
         elevation = CardDefaults.cardElevation(8.dp)
     ) {
-
         val imageUrl = photo.imgSrc?.replace("http", "https")
 
         val painter = rememberImagePainter(data = imageUrl) {
             crossfade(true)
         }
+
+        /*if (painter.state is ImagePainter.State.Success) {
+            LaunchedEffect(key1 = painter) {
+                val imageDrawable = painter.imageLoader.execute(painter.request).drawable
+                imageDrawable?.let {
+                    it.generateImagePalette().vibrantSwatch?.titleTextColor?.let { color ->
+                        dominantTextColor = Color(color)
+                    }
+                }
+            }
+        }*/
 
         Box(modifier = Modifier.fillMaxSize()) {
 
@@ -54,7 +63,11 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
             )
 
             photo.earthDate?.let {
-                Text(modifier = Modifier.align(Alignment.TopStart), text = it)
+                Text(
+                    modifier = Modifier.align(Alignment.TopStart),
+                    text = it,
+                    fontSize = 16.sp
+                )
             }
 
             Column(
@@ -70,7 +83,7 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
                 photo.rover?.name?.let {
                     Text(
                         text = it,
-                        fontSize = 16.sp,
+                        fontSize = 20.sp,
                         fontWeight = FontWeight.Black,
                         overflow = TextOverflow.Ellipsis,
                         maxLines = 1
@@ -81,10 +94,10 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
                     Text(
                         text = it,
                         fontSize = 12.sp,
-                        fontWeight = FontWeight.Normal,
+                        fontWeight = FontWeight.SemiBold,
                         overflow = TextOverflow.Ellipsis,
                         maxLines = 2,
-                        lineHeight = 14.sp
+                        lineHeight = 16.sp
                     )
                 }
 
