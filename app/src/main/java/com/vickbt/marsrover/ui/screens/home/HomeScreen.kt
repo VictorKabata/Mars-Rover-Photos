@@ -20,6 +20,8 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
 
     val homeUiState = viewModel.homeUiState.collectAsState().value
 
+     val some=homeUiState.data
+
     if (homeUiState.isLoading) {
         CircularProgressIndicator()
     } else if (!homeUiState.error.isNullOrEmpty()) {
@@ -31,7 +33,7 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            homeUiState.data?.let {
+            homeUiState.data.let {
                 items(items = it) { photo ->
                     PhotoCard(
                         modifier = Modifier.height(250.dp),

@@ -64,6 +64,8 @@ dependencies {
     implementation(libs.compose.preview)
     implementation(libs.compose.material3)
 
+    implementation(libs.paging.compose)
+
     implementation(libs.coil)
 
     implementation(libs.palette)

@@ -8,9 +8,10 @@ koinAndroid = "3.3.3"
 koinCompose = "3.4.2"
 kotlinxSerializationJson = "1.5.0"
 ktor = "2.2.3"
-pagingRuntime = "3.1.1"
+paging = "3.1.1"
 pagingCompose = "1.0.0-alpha18"
 room="2.5.1"
+pagingKotlin="0.5.0"
 
 lifecycle = "2.3.1"
 composeCompiler = "1.4.0"
@@ -46,8 +47,9 @@ ktor-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", 
 ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pagingRuntime" }
-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
+paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-kotlin={module="io.github.kuuuurt:multiplatform-paging", version.ref="pagingKotlin"}
+paging-common={module="androidx.paging:paging-common", version.ref="paging"}
 
 
 #Android Dependencies
@@ -63,6 +65,7 @@ navigation-compose = { module = "androidx.navigation:navigation-compose", versio
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 palette = { module = "androidx.palette:palette", version.ref = "palette" }
 leakCanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary" }
+paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
 
 #Test Dependencies
 jUnit = { module = "junit:junit", version.ref = "jUnit" }
