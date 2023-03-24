@@ -27,6 +27,7 @@ val networkModule = module {
                 url {
                     protocol = URLProtocol.HTTPS
                     host = "api.nasa.gov"
+                    parameters.append("api_key", "DEMO_KEY")
                 }
             }
 

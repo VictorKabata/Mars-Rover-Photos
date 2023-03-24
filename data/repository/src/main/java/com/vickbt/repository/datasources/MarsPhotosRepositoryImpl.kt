@@ -13,10 +13,8 @@ class MarsPhotosRepositoryImpl constructor(private val apiService: ApiService) :
     MarsPhotosRepository {
 
     override suspend fun fetchMarsPhotos(page: Int): Flow<PagingData<Photo>> {
-        val pagingConfig = PagingConfig(
-            pageSize = 30,
-            enablePlaceholders = false
-        )
+
+        val pagingConfig = PagingConfig(pageSize = 15, enablePlaceholders = false)
 
         return Pager(
             config = pagingConfig,
