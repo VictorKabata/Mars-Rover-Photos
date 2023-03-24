@@ -64,6 +64,9 @@ dependencies {
     implementation(libs.compose.preview)
     implementation(libs.compose.material3)
 
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
+
     testImplementation(libs.jUnit)
 
     androidTestImplementation(libs.androidx.jUnit)

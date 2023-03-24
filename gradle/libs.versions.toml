@@ -20,6 +20,7 @@ composeMaterial3 = "1.0.0-alpha11"
 navigation = "2.4.0-alpha02"
 coil = "1.4.0"
 palette = "1.0.0"
+leakCanary = "2.9.1"
 
 jUnit = "4.13.2"
 androidXjUnit = "1.1.5"
@@ -31,6 +32,8 @@ android-application = { id = "com.android.application", version.ref = "androidGr
 android-library = { id = "com.android.library", version.ref = "androidGradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-JVM = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+kotlinX-serialization-plugin = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 [libraries]
 #Data Dependencies
@@ -59,6 +62,7 @@ koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = 
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 palette = { module = "androidx.palette:palette", version.ref = "palette" }
+leakCanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary" }
 
 #Test Dependencies
 jUnit = { module = "junit:junit", version.ref = "jUnit" }

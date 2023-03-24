@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace="com.vickbt.cache"
+    namespace="com.vickbt.repository"
     compileSdk = 33
 
     defaultConfig {
@@ -36,10 +36,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
-    implementation(project(":data:network"))
-    implementation(project(":data:cache"))
-
-    // implementation("androidx.core:core-ktx:1.7.0")
-
+    api(project(":domain"))
+    api(project(":data:network"))
+    api(project(":data:cache"))
 }

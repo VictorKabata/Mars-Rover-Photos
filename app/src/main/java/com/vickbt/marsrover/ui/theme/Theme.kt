@@ -38,9 +38,8 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun MARSROVERTheme(
+fun MarsRoverTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
