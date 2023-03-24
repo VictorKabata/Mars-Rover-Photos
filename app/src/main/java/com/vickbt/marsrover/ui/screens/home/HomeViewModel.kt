@@ -1,18 +1,18 @@
 package com.vickbt.marsrover.ui.screens.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.vickbt.domain.models.Photo
 import com.vickbt.domain.repositories.MarsPhotosRepository
+import com.vickbt.domain.utils.HomeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepository) :
     ViewModel() {
 
-    private val _homeUiState = MutableStateFlow<List<Photo>?>(emptyList())
+    private val _homeUiState = MutableStateFlow<HomeUiState>(HomeUiState(isLoading = true))
     val homeUiState = _homeUiState.asStateFlow()
 
     private val _error = MutableStateFlow<String?>(null)
@@ -24,11 +24,11 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
 
     private fun fetchMarsPhotos() = viewModelScope.launch {
         try {
-            marsPhotosRepository.fetchMarsPhotos().collect {
-                _homeUiState.value = it
+            marsPhotosRepository.fetchMarsPhotos().collect { marsPhotos ->
+                _homeUiState.update { it.copy(data = marsPhotos, isLoading = false) }
             }
         } catch (e: Exception) {
-            _error.value=e.localizedMessage
+            _homeUiState.update { it.copy(error = e.localizedMessage, isLoading = false) }
         }
     }
 
