@@ -19,7 +19,7 @@ android {
         buildConfigField(
             "String",
             "API_KEY",
-            gradleLocalProperties(rootDir).getProperty("api_key") ?: "DEMO_KEY"
+            gradleLocalProperties(rootDir).getProperty("api_key") ?: "\"DEMO_KEY\""
         )
     }
 
