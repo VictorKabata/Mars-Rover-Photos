@@ -1,6 +1,5 @@
 package com.vickbt.marsrover.ui.screens.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
@@ -17,7 +16,7 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
     private val _homeUiState = MutableStateFlow(HomeUiState())
     val homeUiState = _homeUiState.asStateFlow()
 
-    private val _roverName = MutableStateFlow<String?>(null)
+    private val roverName = MutableStateFlow<String>("curiosity")
 
 
     init {
@@ -25,18 +24,16 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
     }
 
     private fun fetchMarsPhotos() = viewModelScope.launch {
-        _roverName.collect {
-            Log.e("VicKbt", "Filter: $it")
-            val response =
-                marsPhotosRepository.fetchMarsPhotos(roverName = _roverName.value ?: "curiosity")
-                    .cachedIn(viewModelScope)
+        roverName.collect {
+            val response = marsPhotosRepository.fetchMarsPhotos(roverName = roverName.value)
+                .cachedIn(viewModelScope)
 
             _homeUiState.update { it.copy(data = response, isLoading = false) }
         }
     }
 
     fun filterRover(roverName: String) {
-        _roverName.value = roverName
+        this.roverName.value = roverName
     }
 
 }
