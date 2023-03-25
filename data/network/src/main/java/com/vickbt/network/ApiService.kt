@@ -12,7 +12,7 @@ class ApiService constructor(private val httpClient: HttpClient) {
     suspend fun fetchMarsPhotos(
         page: Int,
         sol: Int = 1000,
-        roverName: String
+        roverName: String? = "curiosity"
     ): List<PhotoDto> {
         return httpClient.get(urlString = "mars-photos/api/v1/rovers/$roverName/photos") {
             parameter("page", page)

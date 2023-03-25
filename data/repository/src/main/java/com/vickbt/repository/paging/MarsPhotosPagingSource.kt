@@ -9,7 +9,7 @@ import java.io.IOException
 
 class MarsPhotosPagingSource constructor(
     private val apiService: ApiService,
-    private val roverName: String
+    private val roverName: String?
 ) :
     PagingSource<Int, Photo>() {
 
