@@ -20,13 +20,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.vickbt.marsrover.ui.components.HomeTopAppBar
 import com.vickbt.marsrover.ui.components.PhotoCard
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
+fun HomeScreen(navController: NavController, viewModel: HomeViewModel = getViewModel()) {
 
     val homeUiState = viewModel.homeUiState.collectAsState().value
 

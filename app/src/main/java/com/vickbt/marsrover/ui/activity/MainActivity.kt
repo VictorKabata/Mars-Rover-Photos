@@ -9,10 +9,12 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.vickbt.marsrover.ui.screens.home.HomeScreen
+import androidx.navigation.compose.rememberNavController
+import com.vickbt.marsrover.ui.navigation.Navigation
 import com.vickbt.marsrover.ui.theme.MarsRoverTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -20,7 +22,9 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background
                 ) {
-                    HomeScreen()
+                    val navController = rememberNavController()
+
+                    Navigation(navController = navController)
                 }
             }
         }
@@ -31,6 +35,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MarsRoverTheme {
-        HomeScreen()
+
     }
 }

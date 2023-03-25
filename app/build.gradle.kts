@@ -68,6 +68,8 @@ dependencies {
 
     implementation(libs.paging.compose)
 
+    implementation(libs.navigation.compose)
+
     implementation(libs.coil)
 
     implementation(libs.palette)
