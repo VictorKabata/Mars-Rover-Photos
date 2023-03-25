@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.vickbt.domain.models.Photo
+import com.vickbt.marsrover.ui.screens.details.DetailsScreen
 import com.vickbt.marsrover.ui.screens.home.HomeScreen
 
 
@@ -15,22 +17,12 @@ fun Navigation(navController: NavHostController) {
             HomeScreen(navController = navController)
         }
 
-        /*composable(
-            route = NavigationItem.Details.route,
-            arguments = listOf(
-                navArgument("movieId") {
-                    type = NavType.IntType
-                },
-                navArgument("cacheId") {
-                    type = NavType.IntType
-                }
-            )
-        ) {
-            val movieID = it.arguments?.getInt("movieId")
-            val cacheId = it.arguments?.getInt("cacheId")
-            if (movieID != null && cacheId != null) {
-                DetailsScreen(navController = navController, movieId = movieID)
+        composable(route = NavigationItem.Details.route) {
+            val photo = navController.previousBackStackEntry?.savedStateHandle?.get<Photo>("photo")
+            photo?.let {
+                DetailsScreen(navController = navController, photo = photo)
             }
-        }*/
+
+        }
     }
 }

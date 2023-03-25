@@ -24,6 +24,7 @@ import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.vickbt.marsrover.ui.components.HomeTopAppBar
 import com.vickbt.marsrover.ui.components.PhotoCard
+import com.vickbt.marsrover.ui.navigation.NavigationItem
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -64,7 +65,14 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = getViewM
                                 PhotoCard(
                                     modifier = Modifier.height(250.dp),
                                     photo = photo,
-                                    onClickPhoto = {}
+                                    onClickPhoto = {
+                                        navController.currentBackStackEntry?.savedStateHandle?.set(
+                                            key = "photo",
+                                            value = it
+                                        )
+
+                                        navController.navigate(NavigationItem.Details.route)
+                                    }
                                 )
                             }
                         }
