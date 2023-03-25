@@ -40,17 +40,6 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
             crossfade(true)
         }
 
-        /*if (painter.state is ImagePainter.State.Success) {
-            LaunchedEffect(key1 = painter) {
-                val imageDrawable = painter.imageLoader.execute(painter.request).drawable
-                imageDrawable?.let {
-                    it.generateImagePalette().vibrantSwatch?.titleTextColor?.let { color ->
-                        dominantTextColor = Color(color)
-                    }
-                }
-            }
-        }*/
-
         Box(modifier = Modifier.fillMaxSize()) {
 
             Image(
