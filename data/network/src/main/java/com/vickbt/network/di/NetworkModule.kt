@@ -2,6 +2,7 @@ package com.vickbt.network.di
 
 import android.util.Log
 import com.vickbt.network.ApiService
+import com.vickbt.network.BuildConfig
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.addDefaultResponseValidation
@@ -27,7 +28,7 @@ val networkModule = module {
                 url {
                     protocol = URLProtocol.HTTPS
                     host = "api.nasa.gov"
-                    parameters.append("api_key", "DEMO_KEY")
+                    parameters.append("api_key", BuildConfig.API_KEY)
                 }
             }
 
@@ -52,5 +53,4 @@ val networkModule = module {
     }
 
     singleOf(::ApiService)
-
 }
