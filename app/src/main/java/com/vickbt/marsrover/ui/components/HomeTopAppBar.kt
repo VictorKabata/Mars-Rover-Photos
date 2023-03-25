@@ -1,15 +1,15 @@
 package com.vickbt.marsrover.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.List
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MediumTopAppBar
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,14 +32,13 @@ fun HomeTopAppBar(
 
     var showMenu by remember { mutableStateOf(false) }
 
-    MediumTopAppBar(
+    TopAppBar(
         modifier = modifier.fillMaxWidth(),
         title = {
             Text(
                 text = title,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = 1,
-                color = MaterialTheme.colorScheme.onSurface
+                maxLines = 1
             )
         },
         actions = {
@@ -47,7 +46,7 @@ fun HomeTopAppBar(
                 Icon(
                     imageVector = Icons.Rounded.List,
                     contentDescription = "Filter",
-                    tint = MaterialTheme.colorScheme.onSurface
+                    tint = MaterialTheme.colors.onSurface
                 )
             }
 
@@ -57,8 +56,9 @@ fun HomeTopAppBar(
                         onClick = {
                             showMenu = false
                             onFilterClicked(it.name.lowercase(Locale.getDefault()))
-                        },
-                        text = { Text(text = it.name) })
+                        }) {
+                        Text(text = it.name)
+                    }
                 }
             }
         }

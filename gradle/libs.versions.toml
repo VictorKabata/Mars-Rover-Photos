@@ -17,7 +17,7 @@ lifecycle = "2.3.1"
 composeCompiler = "1.4.0"
 compose = "1.2.0"
 composeActivity = "1.3.1"
-composeMaterial3 = "1.0.0-alpha11"
+material = "1.6.0"
 navigation = "2.4.0-alpha02"
 coil = "1.4.0"
 palette = "1.0.0"
@@ -52,10 +52,11 @@ paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "pag
 #Android Dependencies
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "kotlin" }
 lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
+compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinCompose" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
