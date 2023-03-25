@@ -1,9 +1,5 @@
 package com.vickbt.repository.utils
 
-import com.vickbt.network.models.curiosityRoverHttpResponse
-import com.vickbt.network.models.errorHttpResponse
-import com.vickbt.network.models.opportunityRoverHttpResponse
-import com.vickbt.network.models.spiritRoverHttpResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
