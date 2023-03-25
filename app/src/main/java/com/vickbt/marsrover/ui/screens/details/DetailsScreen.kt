@@ -8,11 +8,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -28,17 +29,17 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import com.vickbt.domain.models.Photo
-import com.vickbt.domain.utils.toDateFormat
 import com.vickbt.marsrover.R
 import com.vickbt.marsrover.ui.components.DrawableText
+import com.vickbt.marsrover.utils.capitalizeEachWord
 import com.vickbt.marsrover.utils.generateImagePalette
+import com.vickbt.marsrover.utils.toDateFormat
 
 @Composable
 fun DetailsScreen(navController: NavController, photo: Photo) {
@@ -81,28 +82,21 @@ fun DetailsScreen(navController: NavController, photo: Photo) {
         //endregion
 
         //region TopAppBar
-        TopAppBar(modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.TopCenter), title = {
-            /*photo.rover?.name?.let {
-                Text(
-                    text = it,
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
-                    color = dominantTextColor,
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 28.sp
-                )
-            }*/
-        }, navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }) {
-                Icon(
-                    imageVector = Icons.Rounded.ArrowBack,
-                    contentDescription = "Back",
-                    tint = dominantTextColor
-                )
-            }
-        }, backgroundColor = Color.Transparent, elevation = 0.dp
+        TopAppBar(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.TopCenter),
+            title = {},
+            navigationIcon = {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        modifier = Modifier.size(24.dp),
+                        imageVector = Icons.Rounded.ArrowBack,
+                        contentDescription = "Back",
+                        tint = dominantTextColor
+                    )
+                }
+            }, backgroundColor = Color.Transparent, elevation = 0.dp
         )
         //endregion
 
@@ -110,7 +104,7 @@ fun DetailsScreen(navController: NavController, photo: Photo) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(350.dp)
+                .height(400.dp)
                 .background(
                     Brush.verticalGradient(
                         listOf(
@@ -122,12 +116,12 @@ fun DetailsScreen(navController: NavController, photo: Photo) {
         )
         //endregion
 
-
-        //region
+        //region Rover Details
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
                 .align(Alignment.BottomStart),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.SpaceBetween
@@ -139,41 +133,38 @@ fun DetailsScreen(navController: NavController, photo: Photo) {
                     text = "Rover Name: $it",
                     color = dominantTextColor,
                     fontWeight = FontWeight.ExtraBold,
-                    fontSize = 28.sp
+                    fontSize = 20.sp
                 )
             }
 
             photo.rover?.launchDate?.let {
-                Text(
+                DrawableText(
+                    imageResource = R.drawable.ic_launch_date,
                     text = "Launch Date: ${it.toDateFormat()}",
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
                     color = dominantTextColor,
                     fontWeight = FontWeight.ExtraBold,
-                    fontSize = 28.sp
+                    fontSize = 20.sp
                 )
             }
 
             photo.rover?.landingDate?.let {
-                Text(
+                DrawableText(
+                    imageResource = R.drawable.ic_landing_date,
                     text = "Landing Date: ${it.toDateFormat()}",
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
                     color = dominantTextColor,
                     fontWeight = FontWeight.ExtraBold,
-                    fontSize = 28.sp
+                    fontSize = 20.sp
                 )
             }
 
 
             photo.rover?.status?.let {
-                Text(
-                    text = "Status: $it",
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1,
+                DrawableText(
+                    imageResource = R.drawable.ic_status,
+                    text = "Status: ${it.capitalizeEachWord()}",
                     color = dominantTextColor,
                     fontWeight = FontWeight.ExtraBold,
-                    fontSize = 28.sp
+                    fontSize = 20.sp
                 )
             }
 

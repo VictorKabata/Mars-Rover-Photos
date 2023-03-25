@@ -24,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.vickbt.domain.models.Photo
-import com.vickbt.domain.utils.toDateFormat
 import com.vickbt.marsrover.R
+import com.vickbt.marsrover.utils.toDateFormat
 
 @Composable
 fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo) -> Unit) {

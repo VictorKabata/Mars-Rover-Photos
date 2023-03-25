@@ -65,10 +65,10 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = getViewM
                                 PhotoCard(
                                     modifier = Modifier.height(250.dp),
                                     photo = photo,
-                                    onClickPhoto = {
+                                    onClickPhoto = { clickedPhoto ->
                                         navController.currentBackStackEntry?.savedStateHandle?.set(
                                             key = "photo",
-                                            value = it
+                                            value = clickedPhoto
                                         )
 
                                         navController.navigate(NavigationItem.Details.route)

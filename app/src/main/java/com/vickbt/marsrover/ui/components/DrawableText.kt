@@ -1,12 +1,12 @@
 package com.vickbt.marsrover.ui.components
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -37,10 +37,11 @@ fun DrawableText(
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        Image(
-            modifier = Modifier.size(16.dp),
+        Icon(
+            modifier = Modifier.size(18.dp),
             painter = painterResource(id = imageResource),
-            contentDescription = "Rover Icon"
+            contentDescription = "Icon",
+            tint = color
         )
 
         Text(
