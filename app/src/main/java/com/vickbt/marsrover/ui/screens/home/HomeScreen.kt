@@ -38,7 +38,11 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = getViewM
         topBar = { HomeTopAppBar(onFilterClicked = { viewModel.filterRover(roverName = it) }) },
     ) { scaffoldPadding ->
 
-        Box(modifier = Modifier.fillMaxSize()) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(scaffoldPadding)
+        ) {
             if (homeUiState.isLoading) {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             } else if (!homeUiState.error.isNullOrEmpty()) {
