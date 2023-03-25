@@ -8,16 +8,16 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.List
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import com.vickbt.domain.utils.RoversEnum
 import com.vickbt.marsrover.R
 import java.util.Locale
@@ -34,6 +34,8 @@ fun HomeTopAppBar(
 
     TopAppBar(
         modifier = modifier.fillMaxWidth(),
+        elevation = 8.dp,
+        backgroundColor = MaterialTheme.colors.surface,
         title = {
             Text(
                 text = title,
@@ -44,7 +46,7 @@ fun HomeTopAppBar(
         actions = {
             IconButton(onClick = { showMenu = !showMenu }) {
                 Icon(
-                    imageVector = Icons.Rounded.List,
+                    painter = painterResource(id = R.drawable.ic_filter_list),
                     contentDescription = "Filter",
                     tint = MaterialTheme.colors.onSurface
                 )

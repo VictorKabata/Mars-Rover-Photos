@@ -21,7 +21,7 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
 
 
     init {
-        // fetchMarsPhotos()
+        fetchMarsPhotos()
     }
 
     private fun fetchMarsPhotos() = viewModelScope.launch {

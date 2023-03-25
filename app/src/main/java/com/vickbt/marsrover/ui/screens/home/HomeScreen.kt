@@ -1,7 +1,11 @@
+@file:OptIn(ExperimentalLayoutApi::class)
+
 package com.vickbt.marsrover.ui.screens.home
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,9 +31,7 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
     val context = LocalContext.current
 
     Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = Modifier.fillMaxSize(),
         topBar = {
             HomeTopAppBar(
                 onFilterClicked = {
@@ -38,14 +40,17 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
                 }
             )
         },
-    ) { paddingValues ->
+    ) { scaffoldPadding ->
 
         LazyVerticalGrid(
-            modifier = Modifier.padding(paddingValues),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(PaddingValues(vertical = 8.dp, horizontal = 16.dp)),
             columns = GridCells.Fixed(2),
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
+
             pagedPhotos?.let {
                 items(it.itemCount) { index ->
                     pagedPhotos[index]?.let { photo ->
@@ -57,6 +62,7 @@ fun HomeScreen(viewModel: HomeViewModel = getViewModel()) {
                     }
                 }
             }
+
         }
 
     }
