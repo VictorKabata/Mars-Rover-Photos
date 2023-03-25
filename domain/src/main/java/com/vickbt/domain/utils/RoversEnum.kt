@@ -1,5 +1,5 @@
 package com.vickbt.domain.utils
 
-enum class RoversEnum {
-    Curiosity, Spirit, Opportunity
+enum class RoversEnum(val apiName: String) {
+    Curiosity("curiosity"), Spirit("spirit"), Opportunity("opportunity")
 }

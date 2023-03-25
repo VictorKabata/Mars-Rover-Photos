@@ -53,4 +53,9 @@ dependencies {
     implementation(libs.ktor.logging)
 
     implementation(libs.kotlinX.serializationJson)
+
+    testImplementation(libs.ktor.mock)
+    testImplementation(libs.jUnit)
+    testImplementation(libs.kotlinX.coroutines.test)
+    testImplementation(libs.googleTruth)
 }
