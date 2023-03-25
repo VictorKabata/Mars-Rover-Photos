@@ -51,7 +51,6 @@ dependencies {
     implementation(libs.ktor.contentNegotiation)
     implementation(libs.ktor.json)
     implementation(libs.ktor.logging)
-
     implementation(libs.kotlinX.serializationJson)
 
     testImplementation(libs.ktor.mock)

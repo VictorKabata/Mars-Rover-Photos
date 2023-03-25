@@ -18,7 +18,7 @@ data class PhotoDto(
     val imgSrc: String,
 
     @SerialName("rover")
-    val rover: RoverDto,
+    val roverDto: RoverDto,
 
     @SerialName("sol")
     val sol: Int

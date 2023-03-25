@@ -24,7 +24,7 @@ internal fun PhotoDto.toDomain(): Photo {
         earthDate = this.earthDate,
         id = this.id,
         imgSrc = this.imgSrc,
-        rover = this.rover.toDomain(),
+        rover = this.roverDto.toDomain(),
         sol = this.sol
     )
 }
