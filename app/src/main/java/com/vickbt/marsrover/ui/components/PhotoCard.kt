@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.vickbt.domain.models.Photo
+import com.vickbt.domain.utils.toDateFormat
 
 @Composable
 fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo) -> Unit) {
@@ -61,11 +62,14 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
                 contentDescription = "Mars Photo By ${photo.rover?.name} rover"
             )
 
-            photo.earthDate?.let {
+            photo.rover?.name?.let {
                 Text(
-                    modifier = Modifier.align(Alignment.TopStart),
+                    modifier = Modifier.padding(2.dp).align(Alignment.TopStart),
                     text = it,
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Black,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
                 )
             }
 
@@ -79,13 +83,13 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
                 verticalArrangement = Arrangement.spacedBy(2.dp)
             ) {
 
-                photo.rover?.name?.let {
+                photo.earthDate?.let {
                     Text(
-                        text = it,
-                        fontSize = 20.sp,
+                        text = it.toDateFormat(),
+                        fontSize = 13.sp,
                         fontWeight = FontWeight.Black,
                         overflow = TextOverflow.Ellipsis,
-                        maxLines = 1
+                        maxLines = 1,
                     )
                 }
 
