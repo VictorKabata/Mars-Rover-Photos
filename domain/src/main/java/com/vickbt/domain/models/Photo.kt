@@ -12,4 +12,4 @@ data class Photo(
     val imgSrc: String? = null,
     val rover: Rover? = null,
     val sol: Int? = null
-):Parcelable
+) : Parcelable

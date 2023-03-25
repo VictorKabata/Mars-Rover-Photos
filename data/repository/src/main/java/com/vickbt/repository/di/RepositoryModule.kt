@@ -7,5 +7,4 @@ import org.koin.dsl.module
 val repositoryModule = module {
 
     single<MarsPhotosRepository> { MarsPhotosRepositoryImpl(apiService = get()) }
-
 }

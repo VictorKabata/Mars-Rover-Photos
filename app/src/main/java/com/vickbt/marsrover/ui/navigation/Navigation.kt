@@ -8,11 +8,9 @@ import com.vickbt.domain.models.Photo
 import com.vickbt.marsrover.ui.screens.details.DetailsScreen
 import com.vickbt.marsrover.ui.screens.home.HomeScreen
 
-
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination = NavigationItem.Home.route) {
-
         composable(route = NavigationItem.Home.route) {
             HomeScreen(navController = navController)
         }
@@ -22,7 +20,6 @@ fun Navigation(navController: NavHostController) {
             photo?.let {
                 DetailsScreen(navController = navController, photo = photo)
             }
-
         }
     }
 }

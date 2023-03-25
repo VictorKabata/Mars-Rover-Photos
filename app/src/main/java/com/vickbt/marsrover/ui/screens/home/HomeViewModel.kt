@@ -49,5 +49,4 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
     fun filterRover(roverName: String) {
         this._roverName.value = roverName
     }
-
 }

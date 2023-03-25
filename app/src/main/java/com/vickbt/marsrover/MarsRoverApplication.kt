@@ -21,5 +21,4 @@ class MarsRoverApplication : Application() {
             modules(modules)
         }
     }
-
 }

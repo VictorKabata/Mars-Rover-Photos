@@ -35,6 +35,5 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MarsRoverTheme {
-
     }
 }

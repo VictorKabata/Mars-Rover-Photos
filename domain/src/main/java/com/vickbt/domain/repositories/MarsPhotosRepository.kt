@@ -11,5 +11,4 @@ interface MarsPhotosRepository {
         page: Int = 1,
         roverName: String? = "curiosity"
     ): Flow<NetworkResultState<Pager<Int, Photo>>>
-
 }

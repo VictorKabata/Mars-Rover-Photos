@@ -29,7 +29,6 @@ fun HomeTopAppBar(
     roversEnumLists: List<RoversEnum> = RoversEnum.values().toList(),
     onFilterClicked: (String) -> Unit
 ) {
-
     var showMenu by remember { mutableStateOf(false) }
 
     TopAppBar(
@@ -58,12 +57,12 @@ fun HomeTopAppBar(
                         onClick = {
                             showMenu = false
                             onFilterClicked(it.name.lowercase(Locale.getDefault()))
-                        }) {
+                        }
+                    ) {
                         Text(text = it.name)
                     }
                 }
             }
         }
     )
-
 }

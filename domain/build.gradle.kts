@@ -1,11 +1,11 @@
 plugins {
-    id ("com.android.library")
-    id ("org.jetbrains.kotlin.android")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
 }
 
 android {
-    namespace="com.vickbt.core"
+    namespace = "com.vickbt.core"
     compileSdk = 33
 
     defaultConfig {
@@ -27,8 +27,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility=JavaVersion.VERSION_1_8
-        targetCompatibility=JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {

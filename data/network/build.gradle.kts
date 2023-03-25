@@ -45,5 +45,4 @@ dependencies {
     implementation(libs.ktor.logging)
 
     implementation(libs.kotlinX.serializationJson)
-
 }

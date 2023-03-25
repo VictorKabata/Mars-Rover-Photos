@@ -36,7 +36,6 @@ fun DrawableText(
         horizontalArrangement = Arrangement.spacedBy(6.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-
         Icon(
             modifier = Modifier.size(18.dp),
             painter = painterResource(id = imageResource),

@@ -16,7 +16,7 @@ dependencyResolutionManagement {
     }
 }
 
-include (":app")
-include (":data:network")
-include (":data:repository")
+include(":app")
+include(":data:network")
+include(":data:repository")
 include(":domain")

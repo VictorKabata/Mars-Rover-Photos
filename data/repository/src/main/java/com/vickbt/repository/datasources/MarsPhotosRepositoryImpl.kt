@@ -17,7 +17,6 @@ class MarsPhotosRepositoryImpl constructor(private val apiService: ApiService) :
         page: Int,
         roverName: String?
     ): Flow<NetworkResultState<Pager<Int, Photo>>> {
-
         val pagingConfig = PagingConfig(pageSize = 15, enablePlaceholders = false)
 
         return safeApiCall {
@@ -28,7 +27,5 @@ class MarsPhotosRepositoryImpl constructor(private val apiService: ApiService) :
                 }
             )
         }
-
     }
-
 }

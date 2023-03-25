@@ -13,7 +13,6 @@ class MarsPhotosPagingSource constructor(
 ) :
     PagingSource<Int, Photo>() {
 
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
         val page = params.key ?: 1
 

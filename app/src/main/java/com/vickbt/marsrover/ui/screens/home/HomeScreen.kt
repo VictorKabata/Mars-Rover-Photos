@@ -29,7 +29,6 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: HomeViewModel = getViewModel()) {
-
     val homeUiState = viewModel.homeUiState.collectAsState().value
 
     val pagedPhotos = homeUiState.data?.collectAsLazyPagingItems()
@@ -58,7 +57,6 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = getViewM
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-
                     pagedPhotos?.let {
                         items(it.itemCount) { index ->
                             pagedPhotos[index]?.let { photo ->
@@ -77,11 +75,8 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = getViewM
                             }
                         }
                     }
-
                 }
             }
         }
-
     }
-
 }

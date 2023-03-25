@@ -42,7 +42,6 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
         }
 
         Box(modifier = Modifier.fillMaxSize()) {
-
             Image(
                 modifier = Modifier
                     .fillMaxSize()
@@ -65,7 +64,6 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
                 horizontalAlignment = Alignment.Start,
                 verticalArrangement = Arrangement.spacedBy(2.dp)
             ) {
-
                 photo.earthDate?.let {
                     Text(
                         text = it.toDateFormat(),
@@ -86,9 +84,7 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
                         lineHeight = 16.sp
                     )
                 }
-
             }
         }
-
     }
 }

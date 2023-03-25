@@ -19,5 +19,4 @@ class ApiService constructor(private val httpClient: HttpClient) {
             parameter("sol", sol)
         }.body<MarsPhotosDto>().photosDto
     }
-
 }

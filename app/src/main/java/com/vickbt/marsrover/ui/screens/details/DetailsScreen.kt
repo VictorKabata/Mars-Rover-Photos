@@ -43,7 +43,6 @@ import com.vickbt.marsrover.utils.toDateFormat
 
 @Composable
 fun DetailsScreen(navController: NavController, photo: Photo) {
-
     val imageUrl = photo.imgSrc?.replace("http", "https")
 
     val defaultDominantTextColor = MaterialTheme.colors.onSurface
@@ -69,7 +68,6 @@ fun DetailsScreen(navController: NavController, photo: Photo) {
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
-
         //region Photo image
         Image(
             modifier = Modifier
@@ -126,7 +124,6 @@ fun DetailsScreen(navController: NavController, photo: Photo) {
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-
             photo.rover?.name?.let {
                 DrawableText(
                     imageResource = R.drawable.ic_rover,
@@ -157,7 +154,6 @@ fun DetailsScreen(navController: NavController, photo: Photo) {
                 )
             }
 
-
             photo.rover?.status?.let {
                 DrawableText(
                     imageResource = R.drawable.ic_status,
@@ -167,11 +163,7 @@ fun DetailsScreen(navController: NavController, photo: Photo) {
                     fontSize = 20.sp
                 )
             }
-
         }
         //endregion
-
     }
-
-
 }

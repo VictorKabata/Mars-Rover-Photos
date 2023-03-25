@@ -1,6 +1,8 @@
 [versions]
 kotlin = "1.8.0"
 androidGradle = "7.4.2"
+ktLint = "10.3.0"
+detekt = "1.19.0"
 
 kotlinxCoroutines = "1.6.4"
 koinCore = "3.3.3"
@@ -35,6 +37,8 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-JVM = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 
 kotlinX-serialization-plugin = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ktLint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktLint" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 [libraries]
 #Data Dependencies

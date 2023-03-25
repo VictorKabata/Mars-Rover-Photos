@@ -14,7 +14,7 @@ fun Drawable.generateImagePalette(): Palette {
 
 fun String.toDateFormat(): String {
     val inputDateTimeFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-    val formattedDate=inputDateTimeFormat.parse(this)
+    val formattedDate = inputDateTimeFormat.parse(this)
 
     val outputDateTimeFormat = SimpleDateFormat("dd MMM, yyyy", Locale.getDefault())
 
