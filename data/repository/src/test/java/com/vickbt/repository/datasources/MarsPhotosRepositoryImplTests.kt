@@ -1,16 +1,17 @@
-package com.vickbt.repository.paging
+package com.vickbt.repository.datasources
 
-import androidx.paging.PagingSource
+import androidx.paging.PagingData
 import com.vickbt.domain.models.Camera
 import com.vickbt.domain.models.Error
 import com.vickbt.domain.models.Photo
 import com.vickbt.domain.models.Rover
-import com.vickbt.domain.utils.RoversEnum
 import com.vickbt.network.ApiService
 import com.vickbt.test.MockNasaHttpClient
 import io.ktor.client.HttpClient
-import java.nio.channels.UnresolvedAddressException
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
@@ -19,7 +20,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class MarsPhotosPagingSourceTests {
+class MarsPhotosRepositoryImplTests {
 
     // Test Helpers
     private val mockHttpClient = MockNasaHttpClient()
@@ -30,7 +31,7 @@ class MarsPhotosPagingSourceTests {
     private val TEST_PAGE_SIZE: Int = 15
 
     // Subject under test
-    private lateinit var marsPhotosPagingSource: MarsPhotosPagingSource
+    private lateinit var marsPhotosRepositoryImpl: MarsPhotosRepositoryImpl
 
     @Before
     fun setup() {
@@ -38,11 +39,7 @@ class MarsPhotosPagingSourceTests {
 
         apiService = ApiService(httpClient = mockKtorHttpClient)
 
-        marsPhotosPagingSource =
-            MarsPhotosPagingSource(
-                apiService = apiService,
-                roverName = RoversEnum.Curiosity.apiName
-            )
+        marsPhotosRepositoryImpl = MarsPhotosRepositoryImpl(apiService)
     }
 
     @After
@@ -51,7 +48,7 @@ class MarsPhotosPagingSourceTests {
     }
 
     @Test
-    fun `load returns success on http success`() = runTest {
+    fun `fetchMarsPhotos returns data on http success`() = runTest {
         val expectedData = listOf<Photo>(
             Photo(
                 camera = Camera(
@@ -74,52 +71,26 @@ class MarsPhotosPagingSourceTests {
             )
         )
 
-        val expectedResult = PagingSource.LoadResult.Page(
-            data = expectedData,
-            prevKey = null,
-            nextKey = 2
-        )
+        val expectedResult = flowOf(PagingData.from(expectedData))
 
-        val actual = marsPhotosPagingSource.load(
-            PagingSource.LoadParams.Refresh(
-                key = 1,
-                loadSize = TEST_PAGE_SIZE,
-                placeholdersEnabled = false
-            )
-        )
+        val actual = marsPhotosRepositoryImpl.fetchMarsPhotos().first()
 
-        assertEquals(expected = expectedResult, actual = actual)
+        assertEquals(expected = expectedResult.first(), actual = actual)
     }
 
     @Test
-    fun `load throws custom exception on http error`() = runTest {
+    fun `fetchMarsPhotos throws exception on error`() = runTest {
         mockHttpClient.throwError()
 
         val expectedException = Error(
             errorCode = "API_KEY_MISSING",
             errorMessage = "No api_key was supplied. Get one at https://api.nasa.gov:443"
         )
-        val expectedResult = PagingSource.LoadResult.Error<Int, Photo>(expectedException)
+        val actualResult = assertFailsWith<Error> {
+            marsPhotosRepositoryImpl.fetchMarsPhotos().first()
+        }
 
-        assertEquals(expected = expectedResult.throwable, actual = expectedException)
-        assertEquals(
-            expected = expectedResult.throwable.message,
-            actual = expectedException.message
-        )
-
-    }
-
-    @Test
-    fun `load throws exception on client-side error`() = runTest {
-        mockHttpClient.throwError()
-
-        val expectedException = UnresolvedAddressException()
-        val expectedResult = PagingSource.LoadResult.Error<Int, Photo>(expectedException)
-
-        assertEquals(expected = expectedResult.throwable, actual = expectedException)
-        assertEquals(
-            expected = expectedResult.throwable.message,
-            actual = expectedException.message
-        )
+        assertEquals(expected = expectedException, actual = actualResult)
+        assertEquals(expected = expectedException.message, actual = actualResult.message)
     }
 }

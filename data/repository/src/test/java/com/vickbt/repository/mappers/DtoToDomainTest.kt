@@ -1,6 +1,5 @@
 package com.vickbt.repository.mappers
 
-import com.google.common.truth.Truth.assertThat
 import com.vickbt.domain.models.Camera
 import com.vickbt.domain.models.Error
 import com.vickbt.domain.models.Photo
@@ -9,6 +8,7 @@ import com.vickbt.network.models.CameraDto
 import com.vickbt.network.models.ErrorDto
 import com.vickbt.network.models.PhotoDto
 import com.vickbt.network.models.RoverDto
+import kotlin.test.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -62,7 +62,7 @@ class DtoToDomainTest {
             )
         )
 
-        assertThat(actual.map { it.toDomain() }).isEqualTo(expectedResult)
+        assertEquals(expected = actual.map { it.toDomain() }, actual = expectedResult)
     }
 
     @Test
@@ -107,7 +107,7 @@ class DtoToDomainTest {
             )
         )
 
-        assertThat(actual.toDomain()).isEqualTo(expectedResult)
+        assertEquals(expected = expectedResult, actual = actual.toDomain())
     }
 
     @Test
@@ -141,6 +141,6 @@ class DtoToDomainTest {
             errorMessage = "No api_key was supplied. Get one at https://api.nasa.gov:443"
         )
 
-        assertThat(actual.toDomain()).isEqualTo(expectedResult)
+        assertEquals(expected = expectedResult, actual = actual.toDomain())
     }
 }
