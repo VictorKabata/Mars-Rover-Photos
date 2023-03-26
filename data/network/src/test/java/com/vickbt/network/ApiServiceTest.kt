@@ -3,9 +3,9 @@ package com.vickbt.network
 import com.google.common.truth.Truth.assertThat
 import com.vickbt.domain.utils.RoversEnum
 import com.vickbt.network.utils.MockNasaHttpClient
-import com.vickbt.network.utils.curiosityRoverResponse
-import com.vickbt.network.utils.opportunityRoverResponse
-import com.vickbt.network.utils.spiritRoverResponse
+import com.vickbt.test.curiosityRoverResponse
+import com.vickbt.test.opportunityRoverResponse
+import com.vickbt.test.spiritRoverResponse
 import io.ktor.client.HttpClient
 import kotlinx.coroutines.test.runTest
 import org.junit.After

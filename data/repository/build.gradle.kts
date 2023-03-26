@@ -48,4 +48,6 @@ dependencies {
     testImplementation(libs.jUnit)
     testImplementation(libs.kotlinX.coroutines.test)
     testImplementation(libs.googleTruth)
+
+    testImplementation(project(":core:test"))
 }

@@ -1,4 +1,4 @@
-package com.vickbt.repository.utils
+package com.vickbt.test
 
 import com.vickbt.network.models.CameraDto
 import com.vickbt.network.models.ErrorResponseDto
@@ -51,25 +51,6 @@ val curiosityRoverResponse = listOf<PhotoDto>(
             name = "Curiosity",
             status = "active"
         )
-    ),
-    PhotoDto(
-        cameraDto = CameraDto(
-            fullName = "Front Hazard Avoidance Camera",
-            id = 20,
-            name = "FHAZ",
-            roverId = 5
-        ),
-        earthDate = "2015-05-30",
-        id = 102693,
-        imgSrc = "imgSrc",
-        sol = 1000,
-        roverDto = RoverDto(
-            id = 5,
-            landingDate = "2012-08-06",
-            launchDate = "2011-11-26",
-            name = "Curiosity",
-            status = "active"
-        )
     )
 )
 //endregion
@@ -87,7 +68,7 @@ val spiritRoverHttpResponse = """
                     "rover_id": 7,
                     "full_name": "Navigation Camera"
                 },
-                "img_src": "http://mars.nasa.gov/mer/gallery/all/2/n/1000/2N215136972EDNAS00P1585L0M1-BR.JPG",
+                "img_src": "imgSrc",
                 "earth_date": "2006-10-27",
                 "rover": {
                     "id": 7,
@@ -102,25 +83,6 @@ val spiritRoverHttpResponse = """
 """.trimIndent()
 
 val spiritRoverResponse = listOf<PhotoDto>(
-    PhotoDto(
-        cameraDto = CameraDto(
-            fullName = "Navigation Camera",
-            id = 29,
-            name = "NAVCAM",
-            roverId = 7
-        ),
-        earthDate = "2006-10-27",
-        id = 301536,
-        sol = 1000,
-        imgSrc = "imgSrc",
-        roverDto = RoverDto(
-            id = 7,
-            landingDate = "2004-01-04",
-            launchDate = "2003-06-10",
-            name = "Spirit",
-            status = "complete"
-        )
-    ),
     PhotoDto(
         cameraDto = CameraDto(
             fullName = "Navigation Camera",
@@ -156,7 +118,7 @@ val opportunityRoverHttpResponse = """
                     "rover_id": 6,
                     "full_name": "Navigation Camera"
                 },
-                "img_src": "http://mars.nasa.gov/mer/gallery/all/1/n/1000/1N216958451EFF76ZFP1950L0M1-BR.JPG",
+                "img_src": "imgSrc",
                 "earth_date": "2006-11-17",
                 "rover": {
                     "id": 6,
@@ -171,25 +133,6 @@ val opportunityRoverHttpResponse = """
 """.trimIndent()
 
 val opportunityRoverResponse = listOf<PhotoDto>(
-    PhotoDto(
-        cameraDto = CameraDto(
-            fullName = "Navigation Camera",
-            id = 16,
-            name = "NAVCAM",
-            roverId = 6
-        ),
-        earthDate = "2006-11-17",
-        id = 141044,
-        sol = 1000,
-        imgSrc = "imgSrc",
-        roverDto = RoverDto(
-            id = 6,
-            landingDate = "2004-01-25",
-            launchDate = "2003-07-07",
-            name = "Opportunity",
-            status = "complete"
-        )
-    ),
     PhotoDto(
         cameraDto = CameraDto(
             fullName = "Navigation Camera",
