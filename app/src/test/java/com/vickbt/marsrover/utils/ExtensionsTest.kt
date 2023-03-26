@@ -31,4 +31,19 @@ class ExtensionsTest {
         assertEquals(expected = null, actual = networkDate.toDateFormat())
     }
 
+    @Test
+    fun `capitalizeEachWord capitalizes string value correctly`() = runTest {
+        val networkData = "rover statusIs activE"
+        val expectedData = "Rover Statusis Active"
+
+        assertEquals(expected = expectedData, actual = networkData.capitalizeEachWord())
+    }
+
+    @Test
+    fun `capitalizeEachWord returns null on null string value`() = runTest {
+        val networkData: String? = null
+
+        assertEquals(expected = null, actual = networkData.capitalizeEachWord())
+    }
+
 }

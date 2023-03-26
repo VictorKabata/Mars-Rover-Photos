@@ -23,15 +23,17 @@ fun String?.toDateFormat(): String? {
         val outputDateTimeFormat = SimpleDateFormat("dd MMM, yyyy", Locale.getDefault())
 
         outputDateTimeFormat.format(formattedDate)
-    }
-    else this
+    } else this
 }
 
-/**Capitalize the first letter of each word*/
-fun String.capitalizeEachWord(): String {
-    return lowercase().split(" ").joinToString(" ") { firstCharacter ->
-        firstCharacter.replaceFirstChar {
-            if (it.isLowerCase()) it.titlecase() else it.toString()
+/**Capitalize the first letter of each word
+ * & set letters after first word first string to lowercase*/
+fun String?.capitalizeEachWord(): String? {
+    return if (!this.isNullOrEmpty()) {
+        lowercase().split(" ").joinToString(" ") { firstCharacter ->
+            firstCharacter.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase() else it.toString()
+            }
         }
-    }
+    } else null
 }
