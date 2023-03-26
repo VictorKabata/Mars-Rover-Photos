@@ -53,10 +53,8 @@ dependencies {
     implementation(libs.ktor.logging)
     implementation(libs.kotlinX.serializationJson)
 
-    testImplementation(libs.ktor.mock)
+    testImplementation(project(":core:test"))
     testImplementation(libs.jUnit)
     testImplementation(libs.kotlinX.coroutines.test)
     testImplementation(libs.googleTruth)
-
-    testImplementation(project(":core:test"))
 }

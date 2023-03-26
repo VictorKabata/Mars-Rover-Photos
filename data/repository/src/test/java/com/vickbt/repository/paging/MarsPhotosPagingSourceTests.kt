@@ -7,7 +7,7 @@ import com.vickbt.domain.models.Photo
 import com.vickbt.domain.models.Rover
 import com.vickbt.domain.utils.RoversEnum
 import com.vickbt.network.ApiService
-import com.vickbt.repository.utils.MockNasaHttpClient
+import com.vickbt.test.MockNasaHttpClient
 import io.ktor.client.HttpClient
 import kotlinx.coroutines.test.runTest
 import org.junit.After
