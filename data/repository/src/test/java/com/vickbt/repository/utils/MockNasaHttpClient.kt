@@ -32,7 +32,7 @@ internal class MockNasaHttpClient {
 
     private val responseHeaders = headersOf(HttpHeaders.ContentType, "application/json")
 
-    val mockNasaHttpClient = HttpClient(MockEngine) {
+    val mockHttpClient = HttpClient(MockEngine) {
         engine {
             addHandler { request ->
                 when (request.url.fullPath) {

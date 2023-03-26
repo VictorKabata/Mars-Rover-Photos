@@ -28,7 +28,7 @@ class DtoToDomainTest {
                 ),
                 earthDate = "2015-05-30",
                 id = 102693,
-                imgSrc = "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01000/opgs/edr/fcam/FLB_486265257EDR_F0481570FHAZ00323M_.JPG",
+                imgSrc = "imgSrc",
                 sol = 1000,
                 rover = Rover(
                     id = 5,
@@ -50,7 +50,7 @@ class DtoToDomainTest {
                 ),
                 earthDate = "2015-05-30",
                 id = 102693,
-                imgSrc = "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01000/opgs/edr/fcam/FLB_486265257EDR_F0481570FHAZ00323M_.JPG",
+                imgSrc = "imgSrc",
                 sol = 1000,
                 roverDto = RoverDto(
                     id = 5,
@@ -76,7 +76,7 @@ class DtoToDomainTest {
             ),
             earthDate = "2015-05-30",
             id = 102693,
-            imgSrc = "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01000/opgs/edr/fcam/FLB_486265257EDR_F0481570FHAZ00323M_.JPG",
+            imgSrc = "imgSrc",
             sol = 1000,
             rover = Rover(
                 id = 5,
@@ -96,7 +96,7 @@ class DtoToDomainTest {
             ),
             earthDate = "2015-05-30",
             id = 102693,
-            imgSrc = "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01000/opgs/edr/fcam/FLB_486265257EDR_F0481570FHAZ00323M_.JPG",
+            imgSrc = "imgSrc",
             sol = 1000,
             roverDto = RoverDto(
                 id = 5,
@@ -143,5 +143,4 @@ class DtoToDomainTest {
 
         assertThat(actual.toDomain()).isEqualTo(expectedResult)
     }
-
 }

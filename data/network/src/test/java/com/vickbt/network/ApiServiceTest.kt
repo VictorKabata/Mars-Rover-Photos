@@ -2,10 +2,10 @@ package com.vickbt.network
 
 import com.google.common.truth.Truth.assertThat
 import com.vickbt.domain.utils.RoversEnum
-import com.vickbt.network.models.curiosityRoverResponse
-import com.vickbt.network.models.opportunityRoverResponse
-import com.vickbt.network.models.spiritRoverResponse
 import com.vickbt.network.utils.MockNasaHttpClient
+import com.vickbt.network.utils.curiosityRoverResponse
+import com.vickbt.network.utils.opportunityRoverResponse
+import com.vickbt.network.utils.spiritRoverResponse
 import io.ktor.client.HttpClient
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -17,15 +17,15 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class ApiServiceTest {
 
-    //Helpers
+    // Helpers
     private lateinit var mockKtorClient: HttpClient
 
-    //Subject under test
+    // Subject under test
     private lateinit var apiService: ApiService
 
     @Before
     fun setup() {
-        mockKtorClient = MockNasaHttpClient().mockNasaHttpClient
+        mockKtorClient = MockNasaHttpClient().mockHttpClient
         apiService = ApiService(httpClient = mockKtorClient)
     }
 
@@ -65,5 +65,4 @@ class ApiServiceTest {
         assertThat(response).isNotNull()
         assertThat(response).isEqualTo(expectedResult)
     }
-
 }

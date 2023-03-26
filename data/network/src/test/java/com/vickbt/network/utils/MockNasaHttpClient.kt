@@ -1,9 +1,5 @@
 package com.vickbt.network.utils
 
-import com.vickbt.network.models.curiosityRoverHttpResponse
-import com.vickbt.network.models.errorHttpResponse
-import com.vickbt.network.models.opportunityRoverHttpResponse
-import com.vickbt.network.models.spiritRoverHttpResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -36,7 +32,7 @@ internal class MockNasaHttpClient {
 
     private val responseHeaders = headersOf(HttpHeaders.ContentType, "application/json")
 
-    val mockNasaHttpClient = HttpClient(MockEngine) {
+    val mockHttpClient = HttpClient(MockEngine) {
         engine {
             addHandler { request ->
                 when (request.url.fullPath) {
