@@ -1,8 +1,8 @@
 package com.vickbt.domain.repositories
 
 import androidx.paging.Pager
+import androidx.paging.PagingData
 import com.vickbt.domain.models.Photo
-import com.vickbt.domain.utils.NetworkResultState
 import kotlinx.coroutines.flow.Flow
 
 interface MarsPhotosRepository {
@@ -10,5 +10,5 @@ interface MarsPhotosRepository {
     suspend fun fetchMarsPhotos(
         page: Int = 1,
         roverName: String? = "curiosity"
-    ): Flow<NetworkResultState<Pager<Int, Photo>>>
+    ): Flow<PagingData<Photo>>
 }

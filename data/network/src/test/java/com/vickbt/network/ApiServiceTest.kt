@@ -65,4 +65,13 @@ class ApiServiceTest {
         assertThat(response).isNotNull()
         assertThat(response).isEqualTo(expectedResult)
     }
+
+    /*@Test
+    fun `fetchMarsPhotos from rover failure throws error`() = runTest {
+        val expectedResult = Exception()
+
+        val response = apiService.fetchMarsPhotos(page = 1, roverName = "invalid_name")
+
+        assertThat(response).isEqualTo(expectedResult)
+    }*/
 }

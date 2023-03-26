@@ -3,12 +3,14 @@ package com.vickbt.repository.paging
 import androidx.paging.PagingSource
 import com.google.common.truth.Truth.assertThat
 import com.vickbt.domain.models.Camera
+import com.vickbt.domain.models.Error
 import com.vickbt.domain.models.Photo
 import com.vickbt.domain.models.Rover
 import com.vickbt.domain.utils.RoversEnum
 import com.vickbt.network.ApiService
 import com.vickbt.test.MockNasaHttpClient
 import io.ktor.client.HttpClient
+import java.nio.channels.UnresolvedAddressException
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
@@ -89,21 +91,28 @@ class MarsPhotosPagingSourceTests {
         assertThat(expectedResult).isEqualTo(actual)
     }
 
-    /*@Test
-    fun `load returns error on http error`() = runTest {
+    @Test
+    fun `load throws custom exception on http error`() = runTest {
         mockHttpClient.throwError()
 
-        val error = Exception()
-        val expectedResult = PagingSource.LoadResult.Error<Int, Photo>(error)
-
-        val result = marsPhotosPagingSource.load(
-            PagingSource.LoadParams.Refresh(
-                key = 1,
-                loadSize = TEST_PAGE_SIZE,
-                placeholdersEnabled = false
-            )
+        val expectedException = Error(
+            errorCode = "API_KEY_MISSING",
+            errorMessage = "No api_key was supplied. Get one at https://api.nasa.gov:443"
         )
+        val expectedResult = PagingSource.LoadResult.Error<Int, Photo>(expectedException)
 
-        assertThat(expectedResult).isEqualTo(result)
-    }*/
+        assertThat(expectedResult.throwable).isEqualTo(expectedException)
+        assertThat(expectedResult.throwable.message).isEqualTo(expectedException.message)
+    }
+
+    @Test
+    fun `load throws exception on client-side error`() = runTest {
+        mockHttpClient.throwError()
+
+        val expectedException = UnresolvedAddressException()
+        val expectedResult = PagingSource.LoadResult.Error<Int, Photo>(expectedException)
+
+        assertThat(expectedResult.throwable).isEqualTo(expectedException)
+        assertThat(expectedResult.throwable.message).isEqualTo(expectedException.message)
+    }
 }

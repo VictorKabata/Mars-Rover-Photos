@@ -1,6 +1,6 @@
 package com.vickbt.repository.utils
 
-import com.vickbt.domain.models.ErrorResponse
+import com.vickbt.domain.models.Error
 import com.vickbt.domain.utils.NetworkResultState
 import com.vickbt.network.models.ErrorResponseDto
 import com.vickbt.repository.mappers.toDomain
@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.channelFlow
 
 suspend fun <T : Any?> safeApiCall(apiCall: suspend () -> T): Flow<NetworkResultState<T>> =
     channelFlow {
-        send(NetworkResultState.Loading)
+        // send(NetworkResultState.Loading)
         try {
             send(NetworkResultState.Success(apiCall.invoke()))
         } catch (e: RedirectResponseException) {
@@ -42,6 +42,6 @@ internal suspend fun parseNetworkError(
     errorResponse: HttpResponse? = null,
     exception: Exception? = null
 ): Exception {
-    throw errorResponse?.body<ErrorResponseDto>()?.toDomain()
-        ?: ErrorResponse(errorMessage = exception?.message ?: "Error")
+    throw errorResponse?.body<ErrorResponseDto>()?.error?.toDomain()
+        ?: Error(errorMessage = exception?.message ?: "Error")
 }

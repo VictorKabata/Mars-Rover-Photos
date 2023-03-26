@@ -1,7 +1,7 @@
 package com.vickbt.test
 
 import com.vickbt.network.models.CameraDto
-import com.vickbt.network.models.ErrorResponseDto
+import com.vickbt.network.models.ErrorDto
 import com.vickbt.network.models.PhotoDto
 import com.vickbt.network.models.RoverDto
 
@@ -165,7 +165,7 @@ val errorHttpResponse = """
     } 
 """.trimIndent()
 
-val errorResponse = ErrorResponseDto(
+val errorResponse = ErrorDto(
     errorCode = "API_KEY_MISSING",
     errorMessage = "No api_key was supplied. Get one at https://api.nasa.gov:443"
 )

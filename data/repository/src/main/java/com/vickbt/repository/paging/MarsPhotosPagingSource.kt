@@ -3,8 +3,11 @@ package com.vickbt.repository.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vickbt.domain.models.Photo
+import com.vickbt.domain.utils.NetworkResultState
 import com.vickbt.network.ApiService
 import com.vickbt.repository.mappers.toDomain
+import com.vickbt.repository.utils.safeApiCall
+import kotlinx.coroutines.flow.first
 
 class MarsPhotosPagingSource constructor(
     private val apiService: ApiService,
@@ -14,17 +17,22 @@ class MarsPhotosPagingSource constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
         val page = params.key ?: 1
 
-        return try {
-            val result = apiService.fetchMarsPhotos(page = page, roverName = roverName)
+        val result =
+            safeApiCall { apiService.fetchMarsPhotos(page = page, roverName = roverName) }.first()
 
-            LoadResult.Page(
-                data = result.map { it.toDomain() },
-                nextKey = if (result.isEmpty()) null else page.plus(1),
-                prevKey = if (page == 1) null else page.minus(1)
-            )
-        } catch (e: Exception) {
-            LoadResult.Error(e)
+        return when (result) {
+            is NetworkResultState.Failure -> {
+                LoadResult.Error(result.exception.cause!!)
+            }
+            is NetworkResultState.Success -> {
+                LoadResult.Page(
+                    data = result.data.map { it.toDomain() },
+                    nextKey = if (result.data.isEmpty()) null else page.plus(1),
+                    prevKey = if (page == 1) null else page.minus(1)
+                )
+            }
         }
+
     }
 
     override fun getRefreshKey(state: PagingState<Int, Photo>): Int? {

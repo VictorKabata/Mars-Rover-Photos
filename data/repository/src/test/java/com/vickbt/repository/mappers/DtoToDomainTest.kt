@@ -2,11 +2,11 @@ package com.vickbt.repository.mappers
 
 import com.google.common.truth.Truth.assertThat
 import com.vickbt.domain.models.Camera
-import com.vickbt.domain.models.ErrorResponse
+import com.vickbt.domain.models.Error
 import com.vickbt.domain.models.Photo
 import com.vickbt.domain.models.Rover
 import com.vickbt.network.models.CameraDto
-import com.vickbt.network.models.ErrorResponseDto
+import com.vickbt.network.models.ErrorDto
 import com.vickbt.network.models.PhotoDto
 import com.vickbt.network.models.RoverDto
 import org.junit.Test
@@ -131,12 +131,12 @@ class DtoToDomainTest {
 
     @Test
     fun `ErrorResponseDto toDomain returns correct data`() {
-        val expectedResult = ErrorResponse(
+        val expectedResult = Error(
             errorCode = "API_KEY_MISSING",
             errorMessage = "No api_key was supplied. Get one at https://api.nasa.gov:443"
         )
 
-        val actual = ErrorResponseDto(
+        val actual = ErrorDto(
             errorCode = "API_KEY_MISSING",
             errorMessage = "No api_key was supplied. Get one at https://api.nasa.gov:443"
         )
