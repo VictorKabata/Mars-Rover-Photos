@@ -19,4 +19,10 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data:network"))
 
+    implementation(libs.ktor.mock)
+    implementation(libs.ktor.contentNegotiation)
+    implementation(libs.ktor.json)
+    implementation(libs.ktor.logging)
+    implementation(libs.kotlinX.serializationJson)
+
 }

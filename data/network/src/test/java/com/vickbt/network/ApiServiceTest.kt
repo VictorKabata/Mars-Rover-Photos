@@ -2,7 +2,7 @@ package com.vickbt.network
 
 import com.google.common.truth.Truth.assertThat
 import com.vickbt.domain.utils.RoversEnum
-import com.vickbt.network.utils.MockNasaHttpClient
+import com.vickbt.test.MockNasaHttpClient
 import com.vickbt.test.curiosityRoverResponse
 import com.vickbt.test.opportunityRoverResponse
 import com.vickbt.test.spiritRoverResponse

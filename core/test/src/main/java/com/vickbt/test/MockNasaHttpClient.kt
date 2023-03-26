@@ -1,9 +1,5 @@
-package com.vickbt.network.utils
+package com.vickbt.test
 
-import com.vickbt.test.curiosityRoverHttpResponse
-import com.vickbt.test.errorHttpResponse
-import com.vickbt.test.opportunityRoverHttpResponse
-import com.vickbt.test.spiritRoverHttpResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -22,7 +18,7 @@ import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-internal class MockNasaHttpClient {
+class MockNasaHttpClient {
 
     private var httpStatusCode: HttpStatusCode? = null
     private var responseContent: String? = null
