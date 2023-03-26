@@ -22,23 +22,21 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
     private var filterJob: Job? = null
 
     init {
-        fetchMarsPhotos()
+        // fetchMarsPhotos()
     }
 
-    private fun fetchMarsPhotos(filterParam: String? = null) {
-        filterJob?.cancel()
+    fun fetchMarsPhotos(filterParam: String? = null) = viewModelScope.launch {
+        _homeUiState.update { it.copy(isLoading = true) }
 
-        filterJob = viewModelScope.launch {
-            try {
-                val photos =
-                    marsPhotosRepository.fetchMarsPhotos(roverName = filterParam ?: "curiosity")
-                        .cachedIn(viewModelScope)
-                _homeUiState.update { it.copy(data = photos) }
-            } catch (e: Exception) {
-                _homeUiState.update { it.copy(error = e.message) }
-            }
-
+        try {
+            val photos =
+                marsPhotosRepository.fetchMarsPhotos(roverName = filterParam ?: "curiosity")
+                    .cachedIn(viewModelScope)
+            _homeUiState.update { it.copy(data = photos, isLoading = false) }
+        } catch (e: Exception) {
+            _homeUiState.update { it.copy(error = e.message, isLoading = false) }
         }
+
     }
 
     fun filterRover(roverName: String) {
