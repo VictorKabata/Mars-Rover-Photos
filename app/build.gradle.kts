@@ -77,7 +77,10 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.compose)
 
+    testImplementation(project(":core:test"))
     testImplementation(libs.jUnit)
+    testImplementation(kotlin("test")) //ToDo
+    testImplementation(libs.kotlinX.coroutines.test)
 
     androidTestImplementation(libs.androidx.jUnit)
     androidTestImplementation(libs.espresso.core)

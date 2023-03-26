@@ -7,20 +7,27 @@ import androidx.palette.graphics.Palette
 import java.text.SimpleDateFormat
 import java.util.Locale
 
+/**Generate image color palette from image drawable*/
 fun Drawable.generateImagePalette(): Palette {
     val bitmap = (this as BitmapDrawable).bitmap.copy(Bitmap.Config.ARGB_8888, true)
     return Palette.from(bitmap).maximumColorCount(16).generate()
 }
 
-fun String.toDateFormat(): String {
-    val inputDateTimeFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-    val formattedDate = inputDateTimeFormat.parse(this)
+/**Format date returned from data source to UI format*/
+fun String?.toDateFormat(): String? {
+    return if (this.isNullOrEmpty()) null
+    else if (this.matches(Regex("^\\d{4}-\\d{2}-\\d{2}\$"))) {
+        val inputDateTimeFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formattedDate = inputDateTimeFormat.parse(this)
 
-    val outputDateTimeFormat = SimpleDateFormat("dd MMM, yyyy", Locale.getDefault())
+        val outputDateTimeFormat = SimpleDateFormat("dd MMM, yyyy", Locale.getDefault())
 
-    return outputDateTimeFormat.format(formattedDate)
+        outputDateTimeFormat.format(formattedDate)
+    }
+    else this
 }
 
+/**Capitalize the first letter of each word*/
 fun String.capitalizeEachWord(): String {
     return lowercase().split(" ").joinToString(" ") { firstCharacter ->
         firstCharacter.replaceFirstChar {

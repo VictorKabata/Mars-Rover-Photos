@@ -5,9 +5,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.vickbt.domain.repositories.MarsPhotosRepository
 import com.vickbt.domain.utils.HomeUiState
-import com.vickbt.domain.utils.isLoading
-import com.vickbt.domain.utils.onFailure
-import com.vickbt.domain.utils.onSuccess
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -32,17 +29,15 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
         filterJob?.cancel()
 
         filterJob = viewModelScope.launch {
-            marsPhotosRepository.fetchMarsPhotos(roverName = filterParam ?: "curiosity")
-                .collect { result ->
-                    result.isLoading { isLoading ->
-                        _homeUiState.update { it.copy(isLoading = isLoading) }
-                    }.onSuccess { pagedPhotos ->
-                        val photos = pagedPhotos.flow.cachedIn(viewModelScope)
-                        _homeUiState.update { it.copy(data = photos) }
-                    }.onFailure { error ->
-                        _homeUiState.update { it.copy(error = error.localizedMessage) }
-                    }
-                }
+            try {
+                val photos =
+                    marsPhotosRepository.fetchMarsPhotos(roverName = filterParam ?: "curiosity")
+                        .cachedIn(viewModelScope)
+                _homeUiState.update { it.copy(data = photos) }
+            } catch (e: Exception) {
+                _homeUiState.update { it.copy(error = e.message) }
+            }
+
         }
     }
 

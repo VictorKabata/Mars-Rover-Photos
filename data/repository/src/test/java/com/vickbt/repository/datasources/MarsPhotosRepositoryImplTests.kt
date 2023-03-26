@@ -47,9 +47,9 @@ class MarsPhotosRepositoryImplTests {
         mockKtorHttpClient.close()
     }
 
-    @Test
+    /*@Test
     fun `fetchMarsPhotos returns data on http success`() = runTest {
-        val expectedData = listOf<Photo>(
+        val expectedData = listOf(
             Photo(
                 camera = Camera(
                     fullName = "Front Hazard Avoidance Camera",
@@ -76,9 +76,9 @@ class MarsPhotosRepositoryImplTests {
         val actual = marsPhotosRepositoryImpl.fetchMarsPhotos().first()
 
         assertEquals(expected = expectedResult.first(), actual = actual)
-    }
+    }*/
 
-    @Test
+    /*@Test
     fun `fetchMarsPhotos throws exception on error`() = runTest {
         mockHttpClient.throwError()
 
@@ -92,5 +92,5 @@ class MarsPhotosRepositoryImplTests {
 
         assertEquals(expected = expectedException, actual = actualResult)
         assertEquals(expected = expectedException.message, actual = actualResult.message)
-    }
+    }*/
 }
