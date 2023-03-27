@@ -6,6 +6,7 @@ plugins {
 
     alias(libs.plugins.ktLint)
     alias(libs.plugins.detekt)
+    alias(libs.plugins.kover)
 }
 
 subprojects {
@@ -28,4 +29,7 @@ subprojects {
         parallel = true
         config = files("${project.rootDir}/config/detekt/detekt.yml")
     }
+
+    apply(plugin = "org.jetbrains.kotlinx.kover")
+    koverMerged { enable() }
 }
