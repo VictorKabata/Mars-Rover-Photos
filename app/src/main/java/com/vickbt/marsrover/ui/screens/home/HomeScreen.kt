@@ -15,6 +15,7 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,6 +30,14 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: HomeViewModel = getViewModel()) {
+
+    val roverNameFilter = viewModel.roverName.collectAsState().value
+
+    LaunchedEffect(key1 = roverNameFilter) {
+        viewModel.fetchMarsPhotos(filterParam = roverNameFilter)
+    }
+
+
     val homeUiState = viewModel.homeUiState.collectAsState().value
 
     val pagedPhotos = homeUiState.data?.collectAsLazyPagingItems()

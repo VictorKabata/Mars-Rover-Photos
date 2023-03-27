@@ -18,25 +18,26 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
     val homeUiState = _homeUiState.asStateFlow()
 
     private val _roverName = MutableStateFlow<String?>(null)
+    val roverName = _roverName.asStateFlow()
 
     private var filterJob: Job? = null
 
-    init {
-         fetchMarsPhotos()
-    }
+    fun fetchMarsPhotos(filterParam: String? = null) {
+        filterJob?.cancel()
 
-    fun fetchMarsPhotos(filterParam: String? = null) = viewModelScope.launch {
-        _homeUiState.update { it.copy(isLoading = true) }
+        filterJob = viewModelScope.launch {
+            _homeUiState.update { it.copy(isLoading = true) }
 
-        try {
-            val photos =
-                marsPhotosRepository.fetchMarsPhotos(roverName = filterParam ?: "curiosity")
-                    .cachedIn(viewModelScope)
-            _homeUiState.update { it.copy(data = photos, isLoading = false) }
-        } catch (e: Exception) {
-            _homeUiState.update { it.copy(error = e.message, isLoading = false) }
+            try {
+                val photos =
+                    marsPhotosRepository.fetchMarsPhotos(roverName = filterParam ?: "curiosity")
+                        .cachedIn(viewModelScope)
+                _homeUiState.update { it.copy(data = photos, isLoading = false) }
+            } catch (e: Exception) {
+                _homeUiState.update { it.copy(error = e.message, isLoading = false) }
+            }
+
         }
-
     }
 
     fun filterRover(roverName: String) {
