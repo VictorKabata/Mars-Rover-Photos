@@ -87,7 +87,7 @@ dependencies {
     testImplementation(project(":core:test"))
     testImplementation(libs.jUnit)
     testImplementation(libs.androidx.jUnit)
-    testImplementation(kotlin("test")) //ToDo
+    testImplementation(kotlin("test")) // ToDo
     testImplementation(libs.kotlinX.coroutines.test)
     testImplementation(libs.instantTaskExecutor)
     testImplementation(libs.mockk)

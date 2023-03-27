@@ -36,7 +36,6 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
             } catch (e: Exception) {
                 _homeUiState.update { it.copy(error = e.message, isLoading = false) }
             }
-
         }
     }
 

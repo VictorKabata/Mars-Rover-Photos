@@ -25,7 +25,6 @@ class MarsPhotosPagingSource constructor(
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
-
     }
 
     override fun getRefreshKey(state: PagingState<Int, Photo>): Int? {

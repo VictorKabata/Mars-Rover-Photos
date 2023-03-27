@@ -14,13 +14,9 @@ class ApiService constructor(private val httpClient: HttpClient) {
         sol: Int = 1000,
         roverName: String? = "curiosity"
     ): List<PhotoDto> {
-        return try {
-            httpClient.get(urlString = "mars-photos/api/v1/rovers/$roverName/photos") {
-                parameter("page", page)
-                parameter("sol", sol)
-            }.body<MarsPhotosDto>().photosDto
-        } catch (e: Exception) {
-            throw e
-        }
+        return httpClient.get(urlString = "mars-photos/api/v1/rovers/$roverName/photos") {
+            parameter("page", page)
+            parameter("sol", sol)
+        }.body<MarsPhotosDto>().photosDto
     }
 }

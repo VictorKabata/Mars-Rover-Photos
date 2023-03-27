@@ -1,6 +1,5 @@
 package com.vickbt.domain.repositories
 
-import androidx.paging.Pager
 import androidx.paging.PagingData
 import com.vickbt.domain.models.Photo
 import kotlinx.coroutines.flow.Flow

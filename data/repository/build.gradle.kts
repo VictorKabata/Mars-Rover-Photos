@@ -45,7 +45,7 @@ dependencies {
     testImplementation(libs.kotlinX.serializationJson)
 
     testImplementation(project(":core:test"))
-    testImplementation(kotlin("test")) //ToDo
+    testImplementation(kotlin("test")) // ToDo
     testImplementation(libs.jUnit)
     testImplementation(libs.kotlinX.coroutines.test)
 }

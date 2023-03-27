@@ -10,7 +10,6 @@ android {
     defaultConfig {
         minSdk = 24
         targetSdk = 33
-
     }
 }
 
@@ -24,5 +23,4 @@ dependencies {
     implementation(libs.ktor.json)
     implementation(libs.ktor.logging)
     implementation(libs.kotlinX.serializationJson)
-
 }

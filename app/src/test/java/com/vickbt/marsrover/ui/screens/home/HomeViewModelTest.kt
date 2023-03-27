@@ -84,7 +84,6 @@ class HomeViewModelTest {
 
     @Test
     fun `homeUiState error is updated when fetchMarsPhotos is failure`() = runTest {
-
         coEvery { marsPhotosRepositoryImpl.fetchMarsPhotos(roverName = any()) } throws Exception("Custom error")
 
         val expectedResult = HomeUiState(
@@ -127,5 +126,4 @@ class HomeViewModelTest {
             assertEquals(expected = filterList[index].apiName, actual = roversEnum.apiName)
         }
     }
-
 }

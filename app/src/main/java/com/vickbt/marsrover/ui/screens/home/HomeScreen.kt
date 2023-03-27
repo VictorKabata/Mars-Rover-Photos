@@ -29,7 +29,6 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun HomeScreen(navController: NavController? = null, viewModel: HomeViewModel = getViewModel()) {
-
     val roverNameFilter = viewModel.roverName.collectAsState().value
 
     LaunchedEffect(key1 = roverNameFilter) {

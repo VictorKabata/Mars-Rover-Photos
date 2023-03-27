@@ -45,5 +45,4 @@ class ExtensionsTest {
 
         assertEquals(expected = null, actual = networkData.capitalizeEachWord())
     }
-
 }

@@ -106,7 +106,6 @@ class MarsPhotosPagingSourceTests {
             expected = expectedResult.throwable.message,
             actual = expectedException.message
         )
-
     }
 
     @Test
