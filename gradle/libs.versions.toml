@@ -12,8 +12,6 @@ kotlinxSerializationJson = "1.5.0"
 ktor = "2.2.3"
 paging = "3.1.1"
 pagingCompose = "1.0.0-alpha18"
-room = "2.5.1"
-pagingKotlin = "0.5.0"
 
 lifecycle = "2.3.1"
 composeCompiler = "1.4.0"
