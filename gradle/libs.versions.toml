@@ -84,6 +84,7 @@ compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "co
 compose-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
 googleTruth = { module = "com.google.truth:truth", version.ref = "truth" }
+android-test-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 kotlinX-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }

@@ -2,33 +2,24 @@ package com.vickbt.marsrover.ui.screens.home
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingData
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.vickbt.domain.models.Camera
-import com.vickbt.domain.models.ErrorResponse
 import com.vickbt.domain.models.Photo
 import com.vickbt.domain.models.Rover
 import com.vickbt.domain.utils.HomeUiState
 import com.vickbt.domain.utils.RoversEnum
-import com.vickbt.network.ApiService
 import com.vickbt.repository.datasources.MarsPhotosRepositoryImpl
-import com.vickbt.test.MockNasaHttpClient
-import com.vickbt.test.errorResponse
-import io.ktor.client.HttpClient
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
@@ -47,11 +38,6 @@ class HomeViewModelTest {
     fun setup() {
         homeViewModel = HomeViewModel(marsPhotosRepository = marsPhotosRepositoryImpl)
     }
-
-    /*@Test
-    fun `homeUiState data is updated when fetchMarsPhotos is loading`(){
-
-    }*/
 
     @Test
     fun `homeUiState data is updated when fetchMarsPhotos is success`() = runTest {
@@ -83,7 +69,7 @@ class HomeViewModelTest {
         coEvery { marsPhotosRepositoryImpl.fetchMarsPhotos(roverName = any()) } returns data
 
         assertEquals(
-            expected = HomeUiState(isLoading = false, error = null, data = null),
+            expected = HomeUiState(isLoading = true, error = null, data = null),
             actual = homeViewModel.homeUiState.value
         )
 
@@ -108,7 +94,7 @@ class HomeViewModelTest {
         )
 
         assertEquals(
-            expected = HomeUiState(isLoading = false, error = null, data = null),
+            expected = HomeUiState(isLoading = true, error = null, data = null),
             actual = homeViewModel.homeUiState.value
         )
 
@@ -124,6 +110,22 @@ class HomeViewModelTest {
             expected = expectedResult,
             actual = homeViewModel.homeUiState.value
         )
+    }
+
+    @Test
+    fun `roverName is updated with correct value`() {
+        // Given
+        val filterList = RoversEnum.values().toList()
+
+        assertNull(homeViewModel.roverName.value)
+
+        // When
+        filterList.forEachIndexed { index, roversEnum ->
+            homeViewModel.filterRover(roverName = roversEnum.apiName)
+
+            assertNotNull(homeViewModel.roverName.value)
+            assertEquals(expected = filterList[index].apiName, actual = roversEnum.apiName)
+        }
     }
 
 }

@@ -29,6 +29,13 @@ android {
             )
         }
     }
+
+    /*testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }*/
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -84,6 +91,8 @@ dependencies {
     testImplementation(libs.kotlinX.coroutines.test)
     testImplementation(libs.instantTaskExecutor)
     testImplementation(libs.mockk)
+    testImplementation(libs.android.test.espresso)
+    testImplementation(libs.compose.ui.test)
     testImplementation(libs.robolectric)
     testImplementation(libs.test.runner)
     testImplementation(libs.test.rules)
