@@ -22,7 +22,7 @@ class HomeViewModel constructor(private val marsPhotosRepository: MarsPhotosRepo
     private var filterJob: Job? = null
 
     init {
-        // fetchMarsPhotos()
+         fetchMarsPhotos()
     }
 
     fun fetchMarsPhotos(filterParam: String? = null) = viewModelScope.launch {

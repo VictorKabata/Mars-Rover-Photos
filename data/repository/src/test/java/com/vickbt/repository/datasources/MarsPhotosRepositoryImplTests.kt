@@ -19,7 +19,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-@RunWith(JUnit4::class)
+/*@RunWith(JUnit4::class)
 class MarsPhotosRepositoryImplTests {
 
     // Test Helpers
@@ -47,7 +47,7 @@ class MarsPhotosRepositoryImplTests {
         mockKtorHttpClient.close()
     }
 
-    /*@Test
+    @Test
     fun `fetchMarsPhotos returns data on http success`() = runTest {
         val expectedData = listOf(
             Photo(
@@ -76,9 +76,9 @@ class MarsPhotosRepositoryImplTests {
         val actual = marsPhotosRepositoryImpl.fetchMarsPhotos().first()
 
         assertEquals(expected = expectedResult.first(), actual = actual)
-    }*/
+    }
 
-    /*@Test
+    @Test
     fun `fetchMarsPhotos throws exception on error`() = runTest {
         mockHttpClient.throwError()
 
@@ -92,5 +92,5 @@ class MarsPhotosRepositoryImplTests {
 
         assertEquals(expected = expectedException, actual = actualResult)
         assertEquals(expected = expectedException.message, actual = actualResult.message)
-    }*/
-}
+    }
+}*/
