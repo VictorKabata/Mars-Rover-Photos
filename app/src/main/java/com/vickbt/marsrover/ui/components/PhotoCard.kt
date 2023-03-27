@@ -66,7 +66,7 @@ fun PhotoCard(modifier: Modifier = Modifier, photo: Photo, onClickPhoto: (Photo)
             ) {
                 photo.earthDate?.let {
                     Text(
-                        text = it.toDateFormat(),
+                        text = it.toDateFormat() ?: "",
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Black,
                         overflow = TextOverflow.Ellipsis,

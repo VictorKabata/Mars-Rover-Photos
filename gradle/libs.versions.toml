@@ -12,8 +12,6 @@ kotlinxSerializationJson = "1.5.0"
 ktor = "2.2.3"
 paging = "3.1.1"
 pagingCompose = "1.0.0-alpha18"
-room="2.5.1"
-pagingKotlin="0.5.0"
 
 lifecycle = "2.3.1"
 composeCompiler = "1.4.0"
@@ -29,6 +27,11 @@ jUnit = "4.13.2"
 androidXjUnit = "1.1.5"
 espresso = "3.5.1"
 truth = "1.1.3"
+kover = "0.6.1"
+mockk = "1.12.3"
+instantTaskExecutorRule = "1.1.1"
+test = "1.3.0"
+robolectric = "4.5.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradle" }
@@ -68,6 +71,7 @@ coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 palette = { module = "androidx.palette:palette", version.ref = "palette" }
 leakCanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary" }
 paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
+instantTaskExecutor = { module = "android.arch.core:core-testing", version.ref = "instantTaskExecutorRule" }
 
 #Test Dependencies
 jUnit = { module = "junit:junit", version.ref = "jUnit" }
@@ -76,6 +80,12 @@ espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref =
 compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
-paging-common={module="androidx.paging:paging-common", version.ref="paging"}
+paging-common = { module = "androidx.paging:paging-common", version.ref = "paging" }
 googleTruth = { module = "com.google.truth:truth", version.ref = "truth" }
+android-test-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+kotlinX-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+test-rules = { module = "androidx.test:rules", version.ref = "test" }
+test-runner = { module = "androidx.test:runner", version.ref = "test" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }

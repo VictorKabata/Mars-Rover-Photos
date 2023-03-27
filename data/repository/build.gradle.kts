@@ -38,4 +38,14 @@ android {
 dependencies {
     api(project(":domain"))
     api(project(":data:network"))
+
+    testImplementation(libs.ktor.contentNegotiation)
+    testImplementation(libs.ktor.json)
+    testImplementation(libs.ktor.logging)
+    testImplementation(libs.kotlinX.serializationJson)
+
+    testImplementation(project(":core:test"))
+    testImplementation(kotlin("test")) // ToDo
+    testImplementation(libs.jUnit)
+    testImplementation(libs.kotlinX.coroutines.test)
 }

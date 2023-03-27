@@ -1,10 +1,12 @@
 package com.vickbt.repository.mappers
 
 import com.vickbt.domain.models.Camera
+import com.vickbt.domain.models.Error
 import com.vickbt.domain.models.ErrorResponse
 import com.vickbt.domain.models.Photo
 import com.vickbt.domain.models.Rover
 import com.vickbt.network.models.CameraDto
+import com.vickbt.network.models.ErrorDto
 import com.vickbt.network.models.ErrorResponseDto
 import com.vickbt.network.models.PhotoDto
 import com.vickbt.network.models.RoverDto
@@ -24,7 +26,7 @@ internal fun PhotoDto.toDomain(): Photo {
         earthDate = this.earthDate,
         id = this.id,
         imgSrc = this.imgSrc,
-        rover = this.rover.toDomain(),
+        rover = this.roverDto.toDomain(),
         sol = this.sol
     )
 }
@@ -39,9 +41,13 @@ internal fun RoverDto.toDomain(): Rover {
     )
 }
 
-internal fun ErrorResponseDto.toDomain(): ErrorResponse {
-    return ErrorResponse(
-        errorCode = this.errorCode,
-        errorMessage = this.errorMessage
+internal fun ErrorDto.toDomain(): Error {
+    return Error(
+        errorCode = errorCode,
+        errorMessage = errorMessage
     )
+}
+
+internal fun ErrorResponseDto.toDomain(): ErrorResponse {
+    return ErrorResponse(error = this.error.toDomain())
 }
